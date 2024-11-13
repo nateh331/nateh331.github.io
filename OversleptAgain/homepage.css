@@ -1,0 +1,258 @@
+@font-face {
+    font-family: 'Titania';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Titania-Regular'), url('Titania-Regular.woff') format('woff');
+    src: local('Titania-Regular'), url('Titania-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Titania Outline';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Titania-Outline'), url('Titania-Outline.woff') format('woff');
+    src: local('Titania-Outline'), url('Titania-Outline.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Titania Shadow';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Titania-Shadow'), url('Titania-Shadow.woff') format('woff');
+    src: local('Titania-Shadow'), url('Titania-Shadow.ttf') format('truetype');
+}
+
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  font-family:Titania;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  font-family:Titania;
+}
+
+/* When hovering over the button in the sidebar, make the background color change */
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+/* Styling for the logo at the top, Overslept Again */
+.logo {
+  font-family:Titania Shadow;
+  text-align:center;
+  color:white;
+  margin-bottom:30px;
+}
+
+/* When hovering over the logo, make it do this */
+.logo a:hover {
+  opacity: 0.90;
+  color:grey;
+}
+
+/* Styling for the paragraph text */
+.p {
+  color:white;
+  font-size:18px;
+  font-family:Titania;
+  margin-left:200px;
+  margin-right:200px;
+}
+
+/* Styling for links */
+.fa {
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+/* When you hover over the link, make the opactiy change */
+.fa:hover {
+    opacity:99;
+}
+
+/* Styling for the link to the Instagram */
+.fa-instagram {
+  color: white;
+  display:block;
+}
+
+/* Changes to the image banner at the top, underneath the page title */
+.banner {
+      width:100%;
+      display:block;
+  }
+
+.banner > .banner-image {
+    width: 100%;
+    display: block;
+    height: 400px;
+}
+
+/* Styling changes to the footer */
+footer{
+    padding: 50px 0 20px 0;
+    background-color: black;
+    color:white;
+}
+
+/* Styling changes to the horizontal rule */
+hr{
+    border-style: none;
+    border-top-style:solid;
+    border-color: white;
+    border-width: 5px;
+    width: 50%;
+}
+
+/* Styling changes to link */
+a{
+    color: white;
+    text-decoration: none;
+    font-size: 100%;
+}
+
+/* Button used to open the contact form */
+.open-button {
+  background-color: black;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  font-family:Titania;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position:relative;
+  bottom: 0;
+  
+  z-index: 9;
+  border:none;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: black;
+  text-align:center;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=email]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Styling for the send button */
+.send {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel .send {
+  background-color: #506B3A;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/* Styling for the footer (2019 Overslept Again) */
+#legal {
+  font-family:Titania;
+}
+
+ /* Resize the footer image */ 
+.footerimg {
+  width:60%;
+}
