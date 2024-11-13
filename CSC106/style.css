@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="personalstyle.css">
+        <title>Nathan's Programing Portfolio-Javascripts</title>
+    </head>
+    <body>
+        <div id="page-main-div">
+       <img src="images/csc106_banner.jpg">
+       <table width="800" bgcolor="blue">
+           <thead>
+               <tr>
+                   <th width="200" align="center">
+                       <a href="http://nathanharding.vps.cs.uri.edu">
+                       <img src="images/home.png">
+                       </a>
+                       </th>
+                   <th width="200" align="center">
+                       <a href="http://nathanharding.vps.cs.uri.edu/javascripts.html">
+                       <img src="images/javascripts.png">
+                       </a>
+                       </th>
+                   <th width="200" align="center">
+                       <a href="http://nathanharding.vps.cs.uri.edu/final.html">
+                       <img src="images/final.png">
+                       </a>
+                       </th>
+                   <th width="200" align="center">
+                       <a href="http://nathanharding.vps.cs.uri.edu/about.html">
+                       <img src="images/about.png">
+                       </a>
+                       </th>
+               </tr>
+           </thead>
+       </table>
+    <h1>JavaScripts</h1>
+    <p>These are the Javascripts I have written in CSC 106 using the tools from Khan Academy. Click on the images to see the code for them.</p>
+    
+    
+
+       
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_bitmoji/6244261617762304">
+        <img id="bitmoji" src="images/harding_bitmoji.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_resizebitmoji/5511774727864320">
+        <img id="bitmoji2" src="images/harding_resizebitmoji.png">
+        </a> 
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_dancingbitmoji/6548464600907776">
+        <img id="bitmoji" src="images/harding_dancingbitmoji.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_dancingbitmojifun/5517575718731776">
+        <img id="bitmoji2" src="images/harding_dancingbitmojiFun.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_racingbitmoji/5137440186335232">
+        <img id="bitmoji" src="images/harding_racingbitmoji.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_racingbitmojifun/6269014976004096">
+        <img  id="bitmoji2" src="images/harding_racingbitmojiFun.png">
+        </a>
+         <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_quiz/5883016257896448">
+        <img id="bitmoji" src="images/harding_quiz.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_follow/5708582519734272">
+        <img  id="bitmoji2" src="images/harding_follow.png">
+        </a>
+ 
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_patterns/5859289447170048">
+        <img id="bitmoji" src="images/harding_bitmoji_patterns.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_bitmoji_parade/5984854485401600">
+        <img  id="bitmoji2" src="images/harding_bitmoji_parade.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_sum/5973761130135552">
+        <img id="bitmoji" src="images/harding_sum.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_sum_fun/5131873015726080">
+        <img  id="bitmoji2" src="images/harding_sum_fun.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_sum_cond/6401844018577408">
+        <img id="bitmoji" src="images/harding_sum_cond.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_drybitmoji/5055614441127936">
+        <img  id="bitmoji2" src="images/harding_dry_bitmoji.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_findmax/5458037251932160">
+        <img id="bitmoji" src="images/harding_find_max.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_wardrobe/6712930228928512">
+        <img  id="bitmoji2" src="images/harding_wardrobe.png">
+        </a>
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_numbertrace/4582791719845888">
+        <img  id="bitmoji2" src="images/harding_numbertrace.png">
+        </a>
+<!--
+        <a target="_blank" href="https://www.khanacademy.org/computer-programming/harding_frogger/5559850826891264">
+        <img  id="bitmoji2" src="images/harding_frogger.png">
+        </a>
+        
+-->
+    
+<!--
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_patterns/5859289447170048">
+        harding_Patterns</a></h2><script src="https://www.khanacademy.org/computer-programming/harding_patterns
+        /5859289447170048/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+          
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_bitmoji_parade/5984854485401600">
+        harding_Bitmoji_Parade</a></h2><script src="https://www.khanacademy.org/computer-programming/harding_bitmoji
+        _parade/5984854485401600/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+        
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_sum/5973761130135552">
+        harding_sum</a></h2><script src="https://www.khanacademy.org/computer-programming/harding_sum/5973761130135552/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+        
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_sum_fun/5131873015726080">
+        harding_Sum_Fun</a></h2><script src="https://www.khanacademy.org/computer-programming/harding_sum_fun/5131873015726080/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+        
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_sum_cond/6401844018577408">harding_Sum_Cond
+    </a></h2><script src="https://www.khanacademy.org/computer-programming/harding_sum_cond/6401844018577408/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_drybitmoji/5055614441127936">harding_dryBitmoji
+    </a></h2><script src="https://www.khanacademy.org/computer-programming/harding_drybitmoji/5055614441127936/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_findmax/5458037251932160">harding_findMax
+    </a></h2><script src="https://www.khanacademy.org/computer-programming/harding_findmax/5458037251932160/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_wardrobe/6712930228928512">harding_Wardrobe
+    </a></h2><script src="https://www.khanacademy.org/computer-programming/harding_wardrobe/6712930228928512/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+  
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_numbertrace/4582791719845888">harding_numberTrace
+    </a></h2><script src="https://www.khanacademy.org/computer-programming/harding_numbertrace/4582791719845888/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+--> 
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_frogger/5559850826891264">harding_frogger
+    </a></h2><script src="https://www.khanacademy.org/computer-programming/harding_frogger/5559850826891264/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+    
+    <h2><a href="https://www.khanacademy.org/computer-programming/harding_memory/5471783900315648">harding_memory
+    </a></h2><script src="https://www.khanacademy.org/computer-programming/harding_memory/5471783900315648/embed.js?editor=no&buttons=no&author=no&embed=yes"></script>
+    
+    
+
+
+    </div>
+    </body>
+</html>
