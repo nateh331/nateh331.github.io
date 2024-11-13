@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="overcookedstyle.css">
+        <link rel="shortcut icon" type="image/jpg" href="images/iamtheonion.jpg">
+        <title>Form</title>
+    </head>
+    <div id="divlogotable">
+       <img id="logo" src="images/overcookedlogo.jpg" alt="Overcooked Logo">
+       <table id="navtable">
+           <thead>
+               <tr>
+                   <th class="container" id="navbutton">
+                       <a href="overcookedhome.html">
+                       <p class="nav">Home</p>
+                            <div class="overlay">
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Home</div>
+                            </div>
+                       </a>
+                       </th>
+                   <th class="container" id="navbutton">
+                       <a href="overcookedchefs.html">
+                       <p class="nav">Chefs</p>
+                            <div class="overlay">
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Chefs</div>
+                            </div>
+                       </a>
+                       </th>
+                   <th class="container" id="navbutton">
+                       <a href="overcookedrecipes.html">
+                       <p class="nav">Recipes</p>
+                            <div class="overlay">
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Recipes</div>
+                            </div>
+                       </a>
+                       </th>
+                   <th class="container" id="navbutton">
+                       <a href="overcookedlore.html">
+                       <p class="nav">Lore</p>
+                            <div class="overlay">
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Lore</div>
+                            </div>
+                       </a>
+                       </th>
+               </tr>
+               <tr>
+                   <th class="container" id="currentnavbutton">
+                       <a href="overcookedform.html">
+                       <p class="nav">Form</p>
+                            <div class="overlay">
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Form</div>
+                            </div>
+                       </a>
+                       </th>
+                   <th class="container" id="navbutton">
+                       <a href="overcookedchefs.html">
+                       <p class="nav">Future</p>
+                            <div class="overlay">
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Future</div>
+                            </div>
+                       </a>
+                       </th>
+                   <th class="container" id="navbutton">
+                       <a href="overcookedrecipes.html">
+                       <p class="nav">Future</p>
+                            <div class="overlay">
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Future</div>
+                            </div>
+                       </a>
+                       </th>
+                   <th class="container" onclick="nightorDayMode()" id="navbutton">
+                       <p class="nav">Night Mode</p>
+                            <div class="overlay">
+                                
+                                <div class="tomate">
+                                    <img id="imgbutton" src="images/transtomato.png" alt="tomato">
+                                </div>
+                                <div class="text">Night Mode</div>
+                                
+                            </div>
+                       </th>
+               </tr>
+               <tr>
+                   <td colspan='4' id="navjump">
+                       <a class="nav" href="MAILTO:nharding33100@gmail.com">E-Mail Me</a>
+                   </td>
+               </tr>
+           </thead>
+       </table>
+       
+            <img id="mylogo" src="images/iamtheonion.jpg" onmouseover="shavedPicture()" onmouseout="beardPicture()" alt="Website Logo">
+            
+            <div class="dropdown">
+  <button class="dropbtn">My CSC 106 Site</button>
+  <div class="dropdown-content">
+    <a href="../CSC106/index.html">Homepage</a>
+    <a href="../CSC106/javascripts.html">JavaScripts</a>
+    <a href="../CSC106/final.html">Final Project</a>
+    <a href="../CSC106/about.html">About Me</a>
+  </div>
+</div>
+
+       
+    </div>
+    <div id="divhome">
+<form action="MAILTO:nharding33100@gmail.com" method="post" enctype="text/plain">
+<fieldset>
+        <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="First"> <br> <br>
+        <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="Last"> <br> <br>
+        
+        Have you played Overcooked?
+        Yes:
+            <input type="radio" name="Played Game " value="Yes"> 
+        No:
+            <input type="radio" name="Played Game " value="No"> <br> <br>
+            
+        Do you like having fun?
+        Yes:
+            <input type="radio" name="Like Fun " value="Yes"> 
+        No:
+            <input type="radio" name="Like Fun " value="No"> <br> <br>
+         
+           
+        Which foods do you like? <br>
+        <input type="checkbox" name="likesChickenFries" checked="checked"> Chicken & Fries <br>
+        <input type="checkbox" name="likesPizza "> Pizza <br>
+        <input type="checkbox" name="likesSalad "> Salad <br>
+        <input type="checkbox" name="likesSushi "> Sushi <br>
+        <input type="checkbox" name="likesBurger "> Burger <br>
+        <input type="checkbox" name="likesFishChips "> Fish & Chips <br>
+        <input type="checkbox" name="likesCake"> Cake <br>
+        <input type="checkbox" name="likesPancake"> Pancake <br>
+        <input type="checkbox" name="likesBurrito"> Burrito<br>
+        <input type="checkbox" name="likesPasta"> Pasta<br> <br>
+        
+        Which area do you most want to visit? 
+        <select>
+            <option name="VisitSky " value="Sky world">Sky world</option>
+            <option name="VisitForest " value="Forest">Forest</option>
+            <option name="VisitSwamp " value="Swamp">Swamp</option>
+            <option name="VisitMines " value="Mines">Mines</option>
+            <option name="VisitJungle " value="Jungle">Jungle</option>
+            <option name="VisitSpace " value="Space">Space</option>
+            <option name="VisitUnderworld " value="Underworld">Underworld</option>
+        </select> <br> <br>
+        <!---
+        Enter day you plan on buying this game:
+        <input type="date" name="Day of Buy "><br> <br>
+        Do with JavaScript Instead
+        -->
+        
+        Enter day you plan on buying this game:
+        <input type="text" id="date" name="Day of Buy "><br> <br>
+        
+        Comments:<br>
+        <textarea rows="30" cols="80" name="Comments "></textarea><br>
+        <input type="submit" value="Submit" onclick="validateForm()"> <br>
+</fieldset>
+</form>
+ 
+
+  </div> 
+    <script src="overcooked.js"> </script>
+    <script src="form.js"> </script>
+    </body>
+</html>

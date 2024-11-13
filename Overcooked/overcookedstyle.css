@@ -1,0 +1,401 @@
+@font-face {
+  font-family:exfont;
+  src: url(exfont.woff);
+}
+
+body{
+
+    background-image: linear-gradient(to right, #f7d497, #cc9f52);
+    color:black;
+    overflow-x: hidden;
+}
+
+h1{
+    font-family:"exfont";
+    text-decoration:overline underline;
+    text-decoration-color:#ff4040;;
+}
+
+p{
+    font-family:Helvetica;
+}
+
+#divlogotable{
+    display:block;
+    margin:2px;
+}
+
+#logo{
+    border-top:10px solid;
+    border-bottom:10px solid;
+    border-color:#ff4040;
+    border-radius:5px;
+    
+    display:block;
+    width:1500px;
+    position: absolute;
+    top: 10px;
+    left:0px;
+   
+}
+
+#mylogo{
+    border:7px solid #ff4040;
+    border-radius:3px;
+    
+    display:block;
+    width:150px;
+    height:150px;
+    position: absolute;
+    top: 45px;
+    left:1310px;
+   
+}
+
+#navtable{
+    display:block;
+    width:600px;
+    position: absolute;
+    top: 40px;
+    left:700px;
+   
+}
+
+#navbutton{
+    
+    border:2px solid;
+    border-color:#3c13af;
+    border-radius:5px;
+    background-color:#6A93D4;
+    width:150px;
+}
+
+#imgtable{
+    display:block;
+    width:600px;
+    position: absolute;
+    top: 100px;
+    left:700px;
+   
+}
+
+#imgbutton{
+    width:145px;
+    height:80px;
+    padding-top:3px;
+}
+
+
+
+#currentnavbutton{
+    border:2px solid;
+    border-color:#ff4040;
+    border-radius:5px;
+    background-color:#6A93D4;
+    width:150px;
+}
+
+#navjump{
+    border:2px solid;
+    border-color:#3c13af;
+    border-radius:5px;
+    background-color:#6A93D4;
+    width:800px;
+    height:35px;
+    text-align:center;
+}
+
+.nav{
+    color:#00008b;
+    font-family:Times;
+    font-size:25px;
+}
+
+#divhome{
+    width:100%;
+    position: absolute;
+    top: 350px;
+    left:130px;
+    margin:2px;
+}
+
+h1.gamedes{
+    display:block;
+    position: absolute;
+    top: 10px;
+    left:15px;
+    width:800px;
+}
+
+.description{
+    display:block;
+    position:absolute;
+    top: 75px;
+    left:25px;
+    width:600px;
+    font-size:15px;
+    line-height:20px;
+}
+
+h1.features{
+    display:block;
+    position: absolute;
+    top: 240px;
+    left:15px;
+    width:800px;
+}
+
+.description2{
+    display:block;
+    position:absolute;
+    font-family:Helvetica;
+    top: 290px;
+    left:15px;
+    width:600px;
+    font-size:15px;
+    line-height:20px;
+}
+
+
+#video{
+    border:10px solid;
+    border-color:#ff4040;
+    border-radius:5px;
+    
+    position:absolute;
+    top: 50px;
+    left:700px;
+    width:600px;
+    height:400px;
+}
+
+#email{
+    position:absolute;
+    top: 500px;
+    left:10px;
+}
+
+#chefimg{
+    border:10px solid;
+    border-color:#ff4040;
+    border-radius:5px;
+    
+    position:absolute;
+    top: 50px;
+    left:650px;
+    width:600px;
+    height:450px;
+}
+
+#buckphoto{
+    border:10px solid;
+    border-color:#ff4040;
+    border-radius:5px;
+    
+    position:absolute;
+    top: 80px;
+    left:15px;
+    width:400px;
+}
+
+h1.chefs{
+    display:block;
+    position: absolute;
+    top: 10px;
+    left:15px;
+    width:800px;
+}
+
+#cheflist{
+    display:block;
+    float:left; 
+    position:absolute;
+    font-family:Helvetica;
+    top: 20px;
+    left:500px;
+    width:600px;
+    font-size:15px;
+    line-height:20px;
+}
+
+#divhome{
+    width:100%;
+    position: absolute;
+    top: 350px;
+    left:10px;
+    margin:2px;
+}
+
+#divrecipes{
+    position: absolute;
+    top: 350px;
+    left:20px;
+    margin:2px;
+}
+
+.recipes{
+    display:block;
+    position: absolute;
+    top: 10px;
+    left:672px;
+    width:800px;
+}
+
+#burger{
+    position:absolute;
+    top: 100px;
+    left:10px;
+    width:700px;
+}
+
+#sushi{
+    position:absolute;
+    top: 100px;
+    left:750px;
+    width:700px;
+}
+
+#cake{
+    position:absolute;
+    top: 600px;
+    left:10px;
+    width:700px;
+}
+
+#burritos{
+    position:absolute;
+    top: 600px;
+    left:750px;
+    width:700px;
+}
+
+#recipesemail{
+    position:absolute;
+    top: 1100px;
+    left:10px;
+    width:200px;
+}
+
+#divlore{
+    position: absolute;
+    top: 350px;
+    left:20px;
+    margin:2px;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+   /* moves from middle */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  /* takes up 100% of box */
+  width: 100%;
+  height: 100%;
+  /* start scale is invisible */
+  transform: scale(0);
+  /* takes 0.3 seconds to expand, eases into it */
+  transition: 0.3s ease;
+}
+
+.container:hover .overlay {
+/* lets it know to do it when hovering over */
+  transform: scale(1);
+}
+
+.container:focus .overlay {
+/* lets it know to do it when tabbing over it */
+  transform: scale(1);
+}
+
+.container:active {
+    transform: translateY(2px);
+    resize:100px;
+}
+
+.tomate {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+fieldset{
+    width:50%;
+    margin:auto;
+    border:10px solid;
+    border-color:#ff4040;
+    border-radius:5px;
+}
+
+.dropbtn {
+  border-color:#3c13af;
+  border-radius:5px;
+  background-color:#6A93D4;
+  color:#00008b;
+  text-align:center;
+  font-family:Times;
+  width:165px;
+  height:40px;
+  font-size: 16px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 214px;
+  left:1309px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border:2px solid;
+  color:#00008b;
+  font-family:Times;
+  border-color:#3c13af;
+  border-radius:5px;
+  background-color:#6A93D4;
+  width:160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:white;
+  font-family:Times;
+  text-align:center;
+  padding: 12px;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown-content a:focus {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:focus .dropdown-content {display: block;}
