@@ -1,9 +1,6 @@
 // Markers
 const markers = JSON.parse(document.getElementById("markers-data").textContent);
 
-for (i=0; i<markers.features.length;i++){
-	markers.features[i].geometry.coordinates.reverse();
-}
 /*
 var leftMarkers = structuredClone(markers);
 var rightMarkers = structuredClone(markers);
@@ -40,6 +37,13 @@ for (i=0; i<cus.features.length;i++){
 //merge the marker arrays
 cus.features = cus.features.concat(leftCus.features);
 cus.features = cus.features.concat(rightCus.features);
+
+//not sure why we need to flip on all_index
+if(cus.features.length > 5){
+	for (i=0; i<markers.features.length;i++){
+		markers.features[i].geometry.coordinates.reverse();
+	}
+}
 
 function makeTooltip(feature){
 	var tooltip = "";
@@ -813,3 +817,122 @@ m1=L.tileLayer('static/img/antarcticImagery/{z}/{y}/{x}.png', {layers:'Polarview
 m2=L.tileLayer.wms('http://geos.polarview.aq/geoserver/wms', {layers:'polarview:coastS10',format:'image/png',transparent:true, attribution:'Polarview'});
 m3=L.tileLayer('https://tile.gbif.org/3031/omt/{z}/{x}/{y}@4x.png', {attribution: 'Need sourcing info'});
 drawMap('map3', 'antarctic', m1, m2, m3);
+
+function makeTableAEMP(){
+	var currentDB = 0;
+	var table = "";
+	for (i=0; i<markers.features.length;i++){
+		var feature = markers.features[i];
+		var entry = "<tr>";
+		if(feature.properties.db_aemp != null){
+			entry += "<td>SUBS_" + feature.properties.db_aemp.toString().padStart(5, '0') + "</td>";
+		}else{
+			continue;
+		}
+
+		if(currentDB <= feature.properties.db_aemp){
+			currentDB++;
+		}else{
+			continue;
+		}
+		entry += "<td>" + feature.properties.datetime + "</td>";
+		entry += "<td>" + "depth: " + feature.properties.depth + " speed: "+ feature.properties.speed + "</td>";
+		entry += "<td>" + "III" + "</td>";
+
+		entry+="</tr>";
+		table+= entry;
+	}
+	if(document.getElementById("tbodsubs")){
+		document.getElementById("tbodsubs").innerHTML=table;
+	}
+	return table;
+}
+
+function makeTableSurface(){
+	var currentDB = 0;
+	var table = "";
+	for (i=0; i<markers.features.length;i++){
+		var feature = markers.features[i];
+		var entry = "<tr>";
+		if(feature.properties.db_surface != null){
+			entry += "<td>SURFACE_" + feature.properties.db_surface.toString().padStart(5, '0') + "</td>";
+		}else{
+			continue;
+		}
+
+		if(currentDB <= feature.properties.db_surface){
+			currentDB++;
+		}else{
+			continue;
+		}
+		entry += "<td>" + feature.properties.datetime + "</td>";
+		entry += "<td>" + "depth: " + feature.properties.depth + " speed: "+ feature.properties.speed + "</td>";
+		entry += "<td>" + "III" + "</td>";
+
+		entry+="</tr>";
+		table+= entry;
+	}
+	if(document.getElementById("tbodsurface")){
+		document.getElementById("tbodsurface").innerHTML=table;
+	}
+	return table;
+}
+
+function makeTableAerial(){
+	var table = "";
+	var currentDB = 0;
+	for (i=0; i<aerial.features.length;i++){
+		var feature = aerial.features[i];
+		if(currentDB <= feature.properties.pk){
+			currentDB++;
+		}else{
+			continue;
+		}
+		var entry = "<tr>";
+		entry += "<td>" + feature.properties.db_name + "</td>";
+		entry += "<td>" + feature.properties.date + "</td>";
+		entry += "<td>" + "size: " + feature.properties.db_size + " other: " + feature.properties.labels + "</td>";
+		entry += "<td>" + "III" + "</td>";
+
+		entry+="</tr>";
+		table+= entry;
+	}
+	if(document.getElementById("tbodaerial")){
+		document.getElementById("tbodaerial").innerHTML=table;
+	}
+	return table;
+}
+
+function makeTableSeabed(){
+	var table = "";
+	var currentDB = 0;
+	for (i=0; i<cus.features.length;i++){
+		var feature = cus.features[i];
+		if(currentDB <= feature.properties.pk){
+			currentDB++;
+		}else{
+			continue;
+		}
+		var entry = "<tr>";
+		entry += "<td>" + feature.properties.db_name + "</td>";
+		entry += "<td>" + feature.properties.date + "</td>";
+		entry += "<td>" + "depth: " + feature.properties.depth + " array_name: "+ feature.properties.array_name + " other: " + feature.properties.labels + "</td>";
+		entry += "<td>" + "III" + "</td>";
+
+		entry+="</tr>";
+		table+= entry;
+	}
+	if(document.getElementById("tbodseabed")){
+		document.getElementById("tbodseabed").innerHTML=table;
+	}
+	return table;
+}
+
+function makeTable(){
+	var table = makeTableAEMP() + makeTableSurface() + makeTableAerial() + makeTableSeabed();
+	if(document.getElementById("tbod")){
+		document.getElementById("tbod").innerHTML=table;
+	}
+}
+
+makeTable();
