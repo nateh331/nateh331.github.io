@@ -1,0 +1,31 @@
+td {
+  width:50px;
+  height:50px;
+}
+
+#grid{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#info{
+  text-align:center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.empty {
+  background-color: none;
+}
+
+.full {
+  background-color: #30c272;
+}
+
+.locked{
+  background-color: rgb(70, 70, 70);
+}
+
+#rownums{
+  width:30%;
+}
