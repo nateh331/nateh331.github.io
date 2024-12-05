@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Ocean</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <style>
+      .leaflet-container { height: 600px; width: 800px;}
+      #map {
+            position: relative;
+            border: 1px solid black;
+            border-radius: 8px;
+            height: 800px;  /* or as desired */
+            width: 10px;  /* This means "100% of the width of its container", the .col-md-8 */
+          }
+          
+          .o-hidden {
+            overflow: hidden !important;
+          }
+
+          .card-body {
+              -webkit-box-flex: 1;
+              -ms-flex: 1 1 auto;
+              flex: 1 1 auto;
+              padding: 1.25rem;
+            }
+
+          .card-body-icon {
+            position: absolute;
+            z-index: 0;
+            top: -1.25rem;
+            right: -1rem;
+            opacity: 0.4;
+            font-size: 5rem;
+            -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+          }
+      </style>
+
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="static/AdminLTE-master/static/AdminLET-master/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="static/AdminLTE-master/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="static/AdminLTE-master/dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <i class="animation__wobble fas fa-water" style="font-size:100px"></i>
+  </div>
+
+  <div class="main-header bg-success text-white">
+    <strong class="text-center" style="display:block; height:15px;font-size:10px">CUI</strong>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand navbar-dark" style="height:40px">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+</div>
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link bg-primary">
+      <i class="fas fa-solid fa-water" style="margin-left:18px"></i>
+      <span class="brand-text font-weight-light">Data Ocean</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
+              <p>Search Databases
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="all_index.html" class="nav-link">
+                  <i class="fas fa-globe nav-icon"></i>
+                  <p>All</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="subs.html" class="nav-link">
+                  <i class="fas fa-water nav-icon"></i>
+                  <p>Submarines</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="surface.html" class="nav-link">
+                  <i class="fas fa-ship nav-icon"></i>
+                  <p>Surface</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="aerial.html" class="nav-link">
+                  <i class="fas fa-plane nav-icon"></i>
+                  <p>Aerial</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="seabed.html" class="nav-link">
+                  <i class="fas fa-anchor nav-icon"></i>
+                  <p>Seabed</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Documentation
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-question nav-icon"></i>
+                  <p>How to use Data Ocean</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fab fa-amazon nav-icon"></i>
+                  <p>How to link to AWS</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-fire nav-icon"></i>
+                  <p>PyTorch</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-cubes nav-icon"></i>
+                  <p>Tenserflow</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-chart-bar nav-icon"></i>
+                  <p>How to plot pbb data</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Account
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>Updated Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-fw fa-chart-area nav-icon"></i>
+                  <p>Data Ocean Usage Report</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-database nav-icon"></i>
+                  <p>Account Databases</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt" style="color:red"></i>
+              <p class="text-danger">Logout: supercoolperson</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb" style="margin-top: 70px;">
+        <li class="breadcrumb-item">
+            <a href="{% url 'index' %}"><i class="fas fa-home"></i></a>
+        </li>
+        <li class="breadcrumb-item active">Search Aerial Databases</li>
+    </ol>
+
+    <!-- Icon Cards-->
+    <div class="row">
+        <div class="col-xl-1 col-sm-0 mb-1">
+
+        </div>
+        <div class="col-xl-2 col-sm-12 mb-2">
+            <div class="card text-white bg-secondary o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="mr-5">All</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="all_index.html">
+                    <span class="float-left">View Details</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-2">
+            <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="mr-5">Submarines</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="subs.html">
+                    <span class="float-left">View Details</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-2">
+            <div class="card text-white bg-warning o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fa fa-ship"></i>
+                    </div>
+                    <div class="mr-5">Surface</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="surface.html">
+                    <span class="float-left">View Details</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-2">
+            <div class="card text-white bg-success o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fa fa-plane"></i>
+                    </div>
+                    <div class="mr-5">Aerial</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="aerial.html">
+                    <span class="float-left">View Details</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-2">
+            <div class="card text-white bg-danger o-hidden h-100">
+                <div class="card-body">
+                    <div class="card-body-icon">
+                        <i class="fas fa-anchor"></i>
+                    </div>
+                    <div class="mr-5">Seabed</div>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="seabed.html">
+                    <span class="float-left">View Details</span>
+                    <span class="float-right">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- end base.html start main content-->
+
+    <!-- JQuery-->
+  <script type="text/javascript" src="static/js/jquery-2.0.3.min.js"></script>
+  
+  <!--Leaflet-->
+  <script src="static/libs/leaflet-src.js"></script>
+  <link rel="stylesheet" href="static/libs/leaflet.css"/>
+  
+  <!-- Graticule-->
+  <script src="static/js/Leaflet.Graticule.js"></script>
+  <script type="text/javascript" src="static/polar/L.Graticule.min.js"></script>
+  <script src="static/js/leaflet.latlng-graticule.js"></script>
+  <script type="text/javascript" src="static/js/proj4.js"></script>
+  <script type="text/javascript" src="static/js/proj4leaf.js"></script>
+  
+  <!-- Turf.js -->
+  <script type="text/javascript" src="static/js/turf.js"></script>
+  <!--Leaflet Draw-->
+  <script src="static/src/Leaflet.draw.js"></script>
+  <script src="static/src/Leaflet.Draw.Event.js"></script>
+  <link rel="stylesheet" href="static/src/leaflet.draw.css"/>
+  <link rel="stylesheet" href="static/css/map.css">
+  
+  <script src="static/src/Toolbar.js"></script>
+  <script src="static/src/Tooltip.js"></script>
+  
+  <script src="static/src/ext/GeometryUtil.js"></script>
+  <script src="static/src/ext/LatLngUtil.js"></script>
+  <script src="static/src/ext/LineUtil.Intersect.js"></script>
+  <script src="static/src/ext/Polygon.Intersect.js"></script>
+  <script src="static/src/ext/Polyline.Intersect.js"></script>
+  <script src="static/src/ext/TouchEvents.js"></script>
+  <script type="text/javascript" src="static/js/leaflet-lasso.js"></script>
+  
+  <script src="static/src/draw/DrawToolbar.js"></script>
+  <script src="static/src/draw/handler/Draw.Feature.js"></script>
+  <script src="static/src/draw/handler/Draw.SimpleShape.js"></script>
+  <script src="static/src/draw/handler/Draw.Polyline.js"></script>
+  <script src="static/src/draw/handler/Draw.Marker.js"></script>
+  <script src="static/src/draw/handler/Draw.Circle.js"></script>
+  <script src="static/src/draw/handler/Draw.CircleMarker.js"></script> 
+  <script src="static/src/draw/handler/Draw.Rectangle.js"></script>
+ 
+  <script src="static/src/draw/handler/Draw.Polygon.js"></script>
+  
+  
+  <script src="static/src/edit/EditToolbar.js"></script>
+  <script src="static/src/edit/handler/EditToolbar.Edit.js"></script>
+  <script src="static/src/edit/handler/EditToolbar.Delete.js"></script>
+  
+  <script src="static/src/Control.Draw.js"></script>
+  
+  <script src="static/src/edit/handler/Edit.Poly.js"></script>
+  <script src="static/src/edit/handler/Edit.SimpleShape.js"></script>
+  <script src="static/src/edit/handler/Edit.Rectangle.js"></script>
+  <script src="static/src/edit/handler/Edit.Marker.js"></script>
+  <script src="static/src/edit/handler/Edit.CircleMarker.js"></script>
+  <script src="static/src/edit/handler/Edit.Circle.js"></script>
+
+<div class="h1">Search Aerial Databases</div>
+
+<p>
+<a href="#" style="padding: 15px">How-to do guide for advanced searches</a>
+</p>
+
+<div class="container-left card">
+  <div class="row card-body">
+    <div class="col-md-5">
+      <div class="d-flex">
+        <form id="search_form" method="get">
+            <div class="well">
+              <h4 style="margin-top: 0">Filter Database</h4>
+              <button type="button" id="clear" class="btn btn-secondary">
+                <span class="fa fa-trash"></span> Clear All
+                </button>
+				<br>
+              <div class="row">
+                
+                <div class="form-group col-sm-12 col-md-6">
+                  <b>From Date:</b><br>
+                  <input class="form-control" type="date" id="min_date" name="min_date">
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                  <b>To Date:</b><br>
+                  <input class="form-control" type="date" id="max_date" name="max_date">
+                </div>
+                <div class="form-group col-sm-12 col-md-12">
+                  <b>Filter by Selected Months:</b><br>
+                  <input type="checkbox" id="Jan" name="FilterMonth" value="1"/>
+				          <label for="Jan">Jan.</label>
+				          <input type="checkbox" id="Feb" name="FilterMonth" value="2"/>
+				          <label for="Feb">Feb.</label>
+				          <input type="checkbox" id="March" name="FilterMonth" value="3"/>
+				          <label for="March">March</label>
+				          <input type="checkbox" id="April" name="FilterMonth" value="4"/>
+				          <label for="April">April</label>
+				          <input type="checkbox" id="May" name="FilterMonth" value="5"/>
+				          <label for="May">May</label>
+				          <input type="checkbox" id="June" name="FilterMonth" value="6"/>
+				          <label for="June">June</label>
+				          <input type="checkbox" id="July" name="FilterMonth" value="7"/>
+				          <label for="July">July</label>
+				          <input type="checkbox" id="Aug" name="FilterMonth" value="8"/>
+				          <label for="Aug">Aug.</label>
+				          <input type="checkbox" id="Sept" name="FilterMonth" value="9"/>
+				          <label for="Sept">Sept.</label>
+				          <input type="checkbox" id="Oct" name="FilterMonth" value="10"/>
+				          <label for="Oct">Oct.</label>
+				          <input type="checkbox" id="Nov" name="FilterMonth" value="11"/>
+				          <label for="Nov">Nov.</label>
+				          <input type="checkbox" id="Dec" name="FilterMonth" value="12"/>
+				          <label for="Dec">Dec.</label>
+
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-12 col-md-12">
+                    <b style="margin-left:10px">Aerial Database Selection:</b>
+                    <input class="form-control" id="id_id3" style="width:90%;margin-left:10px" type="text" name="databases"/>  
+                  </div>
+                  <div class="form-group col-sm-12 col-md-12">
+                    <b style="margin-left:10px">Size:</b>
+                    <input class="form-control" id="id_id4" style="width:90%;margin-left:10px" type="text" name="databases"/>  
+                  </div>
+                  <div class="form-group col-sm-12 col-md-12">
+                    <b style="margin-left:10px">Labels:</b>
+                    <input class="form-control" id="labels" style="width:90%;margin-left:10px" type="text" name="labels"/>
+                  </div>
+                </div>
+                <div class="form-group col-sm-12 col-md-12">
+                  <b>Security Level</b><br>
+                  <input type="checkbox" id="I" name="Security" value="III"/>
+				  <label for="I">Level I</label>
+				  <input type="checkbox" id="II" name="Security" value="II"/>
+				  <label for="II">Level II</label>
+				  <input type="checkbox" id="III" name="Security" value="I"/>
+				  <label for="III">Level III</label>
+                </div>
+              </div>
+            </div>
+              <div class="container-fluid p-3">
+                  <button type="submit" class="btn btn-success btn-lg btn-block">
+                    <span class="fa fa-search"></span> Search
+                  </button>
+              </div>
+            </div>
+          </form>
+      </div>
+	  
+	
+	<div class="col-md-7 col-sm-12">
+        <div id="markers-data" style="display:none">{"type":"FeatureCollection","crs":{"type":"name","properties":{"name":"EPSG:4326"}},"features":[]}</div>
+        <div id="aerial" style="display:none">
+        {"type": "FeatureCollection", "crs": {"type": "name", "properties": {"name": "EPSG:4326"}}, "features": [{"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00000", "date": "2011-03-06", "db_size": 450, "labels": "['Mink Whale', 'Humpback Whale']", "pk": "0"}, "geometry": {"type": "Point", "coordinates": [16.875050067901626, 89.37504731301337]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00001", "date": "2022-08-31", "db_size": 544, "labels": "['Shipping Traffic', 'Dolphin']", "pk": "1"}, "geometry": {"type": "Point", "coordinates": [33.7500071525573, 89.25180904708888]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00002", "date": "2021-08-04", "db_size": 329, "labels": "['Fishing Trawler']", "pk": "2"}, "geometry": {"type": "Point", "coordinates": [134.8554034232618, 9.801911086061269]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00003", "date": "2022-08-09", "db_size": 521, "labels": "['Earthquake', 'Rain']", "pk": "3"}, "geometry": {"type": "Point", "coordinates": [-56.25000715255728, 23.241372390916453]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00004", "date": "2009-11-21", "db_size": 303, "labels": "['Earthquake', 'Snapping Shrimp', 'Fishing Trawler']", "pk": "4"}, "geometry": {"type": "Point", "coordinates": [78.75000715255736, -54.43595629699308]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00005", "date": "2018-11-28", "db_size": 504, "labels": "['Dolphin', 'Shipping Traffic']", "pk": "5"}, "geometry": {"type": "Point", "coordinates": [-90.09358880590169, 46.11074204483221]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00006", "date": "2021-06-21", "db_size": 421, "labels": "['Dolphin', 'Earthquake', 'Mink Whale']", "pk": "6"}, "geometry": {"type": "Point", "coordinates": [171.5966048707974, -5.324386873152373]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00007", "date": "2008-12-23", "db_size": 534, "labels": "['Dolphin', 'Humpback Whale', 'Earthquake']", "pk": "7"}, "geometry": {"type": "Point", "coordinates": [96.61027306792624, 3.281106917962427]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00008", "date": "2014-03-08", "db_size": 481, "labels": "['Dolphin', 'Mink Whale', 'Orca']", "pk": "8"}, "geometry": {"type": "Point", "coordinates": [-17.81250715255739, 65.94647177615738]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00009", "date": "2009-06-03", "db_size": 563, "labels": "['Humpback Whale']", "pk": "9"}, "geometry": {"type": "Point", "coordinates": [-141.04381331290062, 62.37879743249413]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00010", "date": "2021-10-31", "db_size": 431, "labels": "['Humpback Whale', 'Earthquake', 'Orca']", "pk": "10"}, "geometry": {"type": "Point", "coordinates": [54.37502145767218, 43.410347618730206]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00011", "date": "2017-08-24", "db_size": 490, "labels": "['Snapping Shrimp']", "pk": "11"}, "geometry": {"type": "Point", "coordinates": [-75.4686406823834, 1.432770510034829]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00012", "date": "2020-04-24", "db_size": 308, "labels": "['Shipping Traffic', 'Rain']", "pk": "12"}, "geometry": {"type": "Point", "coordinates": [-171.53885560644616, 68.19920544933343]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00013", "date": "2010-09-27", "db_size": 546, "labels": "['Dolphin', 'Fishing Trawler']", "pk": "13"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00014", "date": "2018-01-02", "db_size": 542, "labels": "['Snapping Shrimp', 'Humpback Whale', 'Fishing Trawler']", "pk": "14"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00015", "date": "2019-07-26", "db_size": 454, "labels": "['Orca']", "pk": "15"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00016", "date": "2015-01-19", "db_size": 592, "labels": "['Fishing Trawler']", "pk": "16"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00017", "date": "2018-12-09", "db_size": 464, "labels": "['Orca']", "pk": "17"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00018", "date": "2015-10-17", "db_size": 491, "labels": "['Mink Whale', 'Rain']", "pk": "18"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00019", "date": "2012-12-04", "db_size": 548, "labels": "['Orca', 'Dolphin']", "pk": "19"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00020", "date": "2017-12-12", "db_size": 394, "labels": "['Fishing Trawler', 'Humpback Whale']", "pk": "20"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00021", "date": "2014-11-20", "db_size": 428, "labels": "['Rain', 'Orca', 'Dolphin']", "pk": "21"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00022", "date": "2009-03-16", "db_size": 355, "labels": "['Humpback Whale', 'Mink Whale']", "pk": "22"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00023", "date": "2015-07-28", "db_size": 427, "labels": "['Snapping Shrimp']", "pk": "23"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00024", "date": "2014-08-08", "db_size": 357, "labels": "['Fishing Trawler']", "pk": "24"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00025", "date": "2022-09-21", "db_size": 484, "labels": "['Orca', 'Shipping Traffic']", "pk": "25"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00026", "date": "2015-07-18", "db_size": 474, "labels": "['Snapping Shrimp', 'Rain']", "pk": "26"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00027", "date": "2018-09-27", "db_size": 316, "labels": "['Mink Whale', 'Shipping Traffic']", "pk": "27"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00028", "date": "2012-08-12", "db_size": 440, "labels": "['Humpback Whale', 'Shipping Traffic', 'Mink Whale']", "pk": "28"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00029", "date": "2015-07-26", "db_size": 451, "labels": "['Humpback Whale', 'Shipping Traffic']", "pk": "29"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00030", "date": "2018-02-27", "db_size": 352, "labels": "['Dolphin', 'Mink Whale']", "pk": "30"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00031", "date": "2010-09-21", "db_size": 505, "labels": "['Earthquake']", "pk": "31"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00032", "date": "2018-05-08", "db_size": 490, "labels": "['Fishing Trawler', 'Rain', 'Snapping Shrimp']", "pk": "32"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00033", "date": "2017-01-13", "db_size": 550, "labels": "['Dolphin', 'Fishing Trawler']", "pk": "33"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00034", "date": "2013-04-26", "db_size": 522, "labels": "['Earthquake', 'Snapping Shrimp']", "pk": "34"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00035", "date": "2015-04-09", "db_size": 306, "labels": "['Dolphin']", "pk": "35"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00036", "date": "2016-04-26", "db_size": 487, "labels": "['Earthquake']", "pk": "36"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00037", "date": "2010-12-25", "db_size": 505, "labels": "['Mink Whale']", "pk": "37"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00038", "date": "2018-07-10", "db_size": 548, "labels": "['Shipping Traffic']", "pk": "38"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00039", "date": "2015-12-05", "db_size": 317, "labels": "['Mink Whale', 'Orca', 'Fishing Trawler']", "pk": "39"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00040", "date": "2009-01-25", "db_size": 539, "labels": "['Rain']", "pk": "40"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00041", "date": "2013-06-17", "db_size": 302, "labels": "['Fishing Trawler']", "pk": "41"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00042", "date": "2017-04-11", "db_size": 383, "labels": "['Rain', 'Orca', 'Fishing Trawler']", "pk": "42"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00043", "date": "2012-04-03", "db_size": 518, "labels": "['Earthquake', 'Mink Whale', 'Snapping Shrimp']", "pk": "43"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00044", "date": "2021-09-07", "db_size": 334, "labels": "['Orca', 'Shipping Traffic']", "pk": "44"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00045", "date": "2016-02-01", "db_size": 479, "labels": "['Orca', 'Humpback Whale']", "pk": "45"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00046", "date": "2021-02-08", "db_size": 546, "labels": "['Rain', 'Humpback Whale']", "pk": "46"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00047", "date": "2015-01-12", "db_size": 364, "labels": "['Dolphin', 'Shipping Traffic']", "pk": "47"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00048", "date": "2016-12-14", "db_size": 533, "labels": "['Snapping Shrimp']", "pk": "48"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00049", "date": "2021-01-20", "db_size": 407, "labels": "['Shipping Traffic', 'Fishing Trawler', 'Snapping Shrimp']", "pk": "49"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00050", "date": "2016-04-28", "db_size": 445, "labels": "['Humpback Whale', 'Fishing Trawler']", "pk": "50"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00051", "date": "2011-07-31", "db_size": 398, "labels": "['Rain']", "pk": "51"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00052", "date": "2016-12-21", "db_size": 430, "labels": "['Mink Whale', 'Fishing Trawler']", "pk": "52"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00053", "date": "2012-07-31", "db_size": 535, "labels": "['Rain']", "pk": "53"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00054", "date": "2017-12-04", "db_size": 355, "labels": "['Orca', 'Dolphin', 'Snapping Shrimp']", "pk": "54"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00055", "date": "2016-10-27", "db_size": 335, "labels": "['Mink Whale', 'Shipping Traffic']", "pk": "55"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00056", "date": "2014-03-07", "db_size": 599, "labels": "['Mink Whale', 'Fishing Trawler', 'Earthquake']", "pk": "56"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00057", "date": "2014-05-21", "db_size": 368, "labels": "['Earthquake']", "pk": "57"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00058", "date": "2020-08-18", "db_size": 370, "labels": "['Mink Whale', 'Earthquake']", "pk": "58"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00059", "date": "2015-05-07", "db_size": 466, "labels": "['Snapping Shrimp']", "pk": "59"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00060", "date": "2017-05-23", "db_size": 438, "labels": "['Orca']", "pk": "60"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00061", "date": "2010-04-20", "db_size": 426, "labels": "['Earthquake', 'Humpback Whale', 'Mink Whale']", "pk": "61"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00062", "date": "2021-12-20", "db_size": 462, "labels": "['Earthquake']", "pk": "62"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00063", "date": "2020-11-11", "db_size": 496, "labels": "['Earthquake', 'Fishing Trawler']", "pk": "63"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00064", "date": "2021-10-16", "db_size": 435, "labels": "['Shipping Traffic']", "pk": "64"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00065", "date": "2012-03-24", "db_size": 495, "labels": "['Rain', 'Humpback Whale']", "pk": "65"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00066", "date": "2014-02-08", "db_size": 483, "labels": "['Snapping Shrimp']", "pk": "66"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00067", "date": "2022-05-05", "db_size": 556, "labels": "['Snapping Shrimp']", "pk": "67"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00068", "date": "2012-07-15", "db_size": 559, "labels": "['Shipping Traffic']", "pk": "68"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00069", "date": "2013-12-07", "db_size": 386, "labels": "['Earthquake', 'Snapping Shrimp', 'Fishing Trawler']", "pk": "69"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00070", "date": "2011-09-09", "db_size": 393, "labels": "['Humpback Whale', 'Mink Whale']", "pk": "70"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00071", "date": "2009-01-31", "db_size": 575, "labels": "['Fishing Trawler']", "pk": "71"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00072", "date": "2016-11-03", "db_size": 307, "labels": "['Rain']", "pk": "72"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00073", "date": "2011-07-26", "db_size": 510, "labels": "['Fishing Trawler', 'Dolphin']", "pk": "73"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00074", "date": "2009-04-30", "db_size": 546, "labels": "['Snapping Shrimp', 'Dolphin']", "pk": "74"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00075", "date": "2021-08-27", "db_size": 381, "labels": "['Earthquake', 'Mink Whale', 'Fishing Trawler']", "pk": "75"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00076", "date": "2020-03-21", "db_size": 520, "labels": "['Snapping Shrimp']", "pk": "76"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00077", "date": "2013-10-24", "db_size": 496, "labels": "['Orca', 'Mink Whale']", "pk": "77"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00078", "date": "2015-08-11", "db_size": 457, "labels": "['Dolphin']", "pk": "78"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00079", "date": "2014-04-27", "db_size": 569, "labels": "['Mink Whale']", "pk": "79"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00080", "date": "2012-12-24", "db_size": 379, "labels": "['Mink Whale', 'Dolphin', 'Humpback Whale']", "pk": "80"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00081", "date": "2014-08-27", "db_size": 405, "labels": "['Earthquake', 'Rain']", "pk": "81"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00082", "date": "2020-10-25", "db_size": 596, "labels": "['Dolphin']", "pk": "82"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00083", "date": "2018-09-06", "db_size": 387, "labels": "['Fishing Trawler']", "pk": "83"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00084", "date": "2016-10-26", "db_size": 539, "labels": "['Humpback Whale']", "pk": "84"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00085", "date": "2021-08-27", "db_size": 428, "labels": "['Rain', 'Snapping Shrimp']", "pk": "85"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00086", "date": "2015-03-16", "db_size": 324, "labels": "['Orca']", "pk": "86"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00087", "date": "2015-11-20", "db_size": 579, "labels": "['Snapping Shrimp']", "pk": "87"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00088", "date": "2015-04-14", "db_size": 505, "labels": "['Fishing Trawler']", "pk": "88"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00089", "date": "2018-05-24", "db_size": 339, "labels": "['Mink Whale']", "pk": "89"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00090", "date": "2020-09-26", "db_size": 466, "labels": "['Orca']", "pk": "90"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00091", "date": "2010-03-17", "db_size": 586, "labels": "['Rain', 'Orca']", "pk": "91"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00092", "date": "2009-01-09", "db_size": 370, "labels": "['Shipping Traffic']", "pk": "92"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00093", "date": "2020-06-03", "db_size": 592, "labels": "['Humpback Whale', 'Dolphin']", "pk": "93"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00094", "date": "2013-09-17", "db_size": 525, "labels": "['Orca']", "pk": "94"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00095", "date": "2010-05-24", "db_size": 426, "labels": "['Snapping Shrimp', 'Orca', 'Shipping Traffic']", "pk": "95"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00096", "date": "2021-02-16", "db_size": 388, "labels": "['Dolphin', 'Humpback Whale', 'Shipping Traffic']", "pk": "96"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00097", "date": "2017-08-17", "db_size": 568, "labels": "['Mink Whale', 'Fishing Trawler']", "pk": "97"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00098", "date": "2011-09-08", "db_size": 597, "labels": "['Rain', 'Humpback Whale']", "pk": "98"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00099", "date": "2021-07-15", "db_size": 340, "labels": "['Shipping Traffic', 'Snapping Shrimp']", "pk": "99"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00100", "date": "2016-06-02", "db_size": 481, "labels": "['Snapping Shrimp']", "pk": "100"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00101", "date": "2018-05-10", "db_size": 363, "labels": "['Mink Whale', 'Rain']", "pk": "101"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00102", "date": "2014-08-02", "db_size": 562, "labels": "['Orca', 'Mink Whale']", "pk": "102"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00103", "date": "2016-05-02", "db_size": 343, "labels": "['Fishing Trawler', 'Earthquake', 'Orca']", "pk": "103"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00104", "date": "2021-06-24", "db_size": 583, "labels": "['Mink Whale', 'Humpback Whale', 'Snapping Shrimp']", "pk": "104"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00105", "date": "2013-01-04", "db_size": 437, "labels": "['Earthquake']", "pk": "105"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00106", "date": "2015-01-02", "db_size": 365, "labels": "['Dolphin', 'Fishing Trawler', 'Rain']", "pk": "106"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00107", "date": "2010-02-13", "db_size": 568, "labels": "['Earthquake', 'Snapping Shrimp']", "pk": "107"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00108", "date": "2011-12-17", "db_size": 534, "labels": "['Dolphin', 'Earthquake', 'Fishing Trawler']", "pk": "108"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00109", "date": "2009-12-15", "db_size": 383, "labels": "['Dolphin']", "pk": "109"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00110", "date": "2016-10-02", "db_size": 544, "labels": "['Fishing Trawler', 'Shipping Traffic']", "pk": "110"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00111", "date": "2014-12-29", "db_size": 505, "labels": "['Mink Whale']", "pk": "111"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00112", "date": "2020-03-27", "db_size": 570, "labels": "['Rain', 'Earthquake']", "pk": "112"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00113", "date": "2012-08-28", "db_size": 336, "labels": "['Shipping Traffic', 'Humpback Whale', 'Orca']", "pk": "113"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00114", "date": "2020-08-13", "db_size": 591, "labels": "['Orca']", "pk": "114"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00115", "date": "2014-11-08", "db_size": 376, "labels": "['Shipping Traffic', 'Mink Whale']", "pk": "115"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00116", "date": "2019-05-21", "db_size": 587, "labels": "['Earthquake', 'Rain']", "pk": "116"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00117", "date": "2010-02-17", "db_size": 528, "labels": "['Orca', 'Humpback Whale']", "pk": "117"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00118", "date": "2019-10-02", "db_size": 431, "labels": "['Snapping Shrimp']", "pk": "118"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00119", "date": "2022-10-20", "db_size": 416, "labels": "['Shipping Traffic', 'Mink Whale']", "pk": "119"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00120", "date": "2018-07-10", "db_size": 500, "labels": "['Humpback Whale']", "pk": "120"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00121", "date": "2017-02-23", "db_size": 470, "labels": "['Earthquake', 'Fishing Trawler']", "pk": "121"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00122", "date": "2019-10-18", "db_size": 323, "labels": "['Mink Whale']", "pk": "122"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00123", "date": "2009-08-29", "db_size": 440, "labels": "['Orca', 'Rain']", "pk": "123"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00124", "date": "2020-07-04", "db_size": 332, "labels": "['Snapping Shrimp', 'Shipping Traffic']", "pk": "124"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00125", "date": "2009-07-25", "db_size": 364, "labels": "['Mink Whale', 'Shipping Traffic', 'Rain']", "pk": "125"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00126", "date": "2013-04-29", "db_size": 337, "labels": "['Snapping Shrimp', 'Fishing Trawler', 'Humpback Whale']", "pk": "126"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00127", "date": "2013-08-25", "db_size": 314, "labels": "['Orca', 'Rain', 'Earthquake']", "pk": "127"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00128", "date": "2021-10-01", "db_size": 401, "labels": "['Snapping Shrimp']", "pk": "128"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00129", "date": "2016-09-01", "db_size": 459, "labels": "['Earthquake', 'Humpback Whale']", "pk": "129"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00130", "date": "2010-09-22", "db_size": 445, "labels": "['Orca', 'Fishing Trawler', 'Humpback Whale']", "pk": "130"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00131", "date": "2011-02-04", "db_size": 518, "labels": "['Orca', 'Mink Whale']", "pk": "131"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00132", "date": "2011-06-09", "db_size": 582, "labels": "['Snapping Shrimp', 'Fishing Trawler']", "pk": "132"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00133", "date": "2022-07-25", "db_size": 588, "labels": "['Rain']", "pk": "133"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00134", "date": "2009-10-09", "db_size": 536, "labels": "['Snapping Shrimp', 'Fishing Trawler']", "pk": "134"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00135", "date": "2009-01-28", "db_size": 498, "labels": "['Shipping Traffic', 'Humpback Whale', 'Fishing Trawler']", "pk": "135"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00136", "date": "2017-09-07", "db_size": 536, "labels": "['Fishing Trawler', 'Earthquake', 'Rain']", "pk": "136"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00137", "date": "2011-09-03", "db_size": 435, "labels": "['Dolphin']", "pk": "137"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00138", "date": "2016-05-21", "db_size": 459, "labels": "['Fishing Trawler', 'Mink Whale', 'Orca']", "pk": "138"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00139", "date": "2018-05-20", "db_size": 456, "labels": "['Earthquake']", "pk": "139"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00140", "date": "2011-07-15", "db_size": 489, "labels": "['Orca', 'Fishing Trawler', 'Mink Whale']", "pk": "140"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00141", "date": "2017-06-28", "db_size": 587, "labels": "['Snapping Shrimp', 'Fishing Trawler', 'Rain']", "pk": "141"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00142", "date": "2015-09-10", "db_size": 376, "labels": "['Snapping Shrimp', 'Orca']", "pk": "142"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00143", "date": "2013-01-21", "db_size": 389, "labels": "['Snapping Shrimp', 'Rain', 'Fishing Trawler']", "pk": "143"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00144", "date": "2016-01-26", "db_size": 375, "labels": "['Dolphin']", "pk": "144"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00145", "date": "2022-03-08", "db_size": 404, "labels": "['Fishing Trawler']", "pk": "145"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00146", "date": "2022-03-04", "db_size": 493, "labels": "['Snapping Shrimp', 'Earthquake']", "pk": "146"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00147", "date": "2016-03-15", "db_size": 394, "labels": "['Humpback Whale', 'Rain']", "pk": "147"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00148", "date": "2017-08-04", "db_size": 573, "labels": "['Fishing Trawler', 'Mink Whale', 'Shipping Traffic']", "pk": "148"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00149", "date": "2017-02-26", "db_size": 331, "labels": "['Rain']", "pk": "149"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00150", "date": "2016-02-28", "db_size": 467, "labels": "['Shipping Traffic', 'Fishing Trawler', 'Dolphin']", "pk": "150"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00151", "date": "2018-08-20", "db_size": 324, "labels": "['Shipping Traffic', 'Fishing Trawler', 'Rain']", "pk": "151"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00152", "date": "2018-07-20", "db_size": 363, "labels": "['Shipping Traffic']", "pk": "152"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00153", "date": "2021-09-24", "db_size": 595, "labels": "['Rain']", "pk": "153"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00154", "date": "2017-02-10", "db_size": 495, "labels": "['Mink Whale', 'Fishing Trawler', 'Rain']", "pk": "154"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00155", "date": "2011-05-20", "db_size": 399, "labels": "['Snapping Shrimp']", "pk": "155"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00156", "date": "2016-07-12", "db_size": 520, "labels": "['Snapping Shrimp', 'Humpback Whale', 'Rain']", "pk": "156"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00157", "date": "2022-10-05", "db_size": 429, "labels": "['Fishing Trawler']", "pk": "157"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00158", "date": "2019-02-06", "db_size": 351, "labels": "['Rain', 'Shipping Traffic']", "pk": "158"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00159", "date": "2020-04-25", "db_size": 396, "labels": "['Shipping Traffic', 'Humpback Whale', 'Snapping Shrimp']", "pk": "159"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00160", "date": "2015-10-24", "db_size": 381, "labels": "['Orca']", "pk": "160"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00161", "date": "2015-11-06", "db_size": 559, "labels": "['Rain']", "pk": "161"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00162", "date": "2020-06-15", "db_size": 583, "labels": "['Dolphin', 'Snapping Shrimp']", "pk": "162"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00163", "date": "2010-01-20", "db_size": 527, "labels": "['Orca', 'Snapping Shrimp', 'Fishing Trawler']", "pk": "163"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00164", "date": "2022-05-03", "db_size": 397, "labels": "['Rain', 'Earthquake', 'Fishing Trawler']", "pk": "164"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00165", "date": "2010-12-04", "db_size": 326, "labels": "['Humpback Whale', 'Fishing Trawler']", "pk": "165"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00166", "date": "2019-07-07", "db_size": 356, "labels": "['Dolphin', 'Mink Whale', 'Fishing Trawler']", "pk": "166"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00167", "date": "2019-12-04", "db_size": 561, "labels": "['Dolphin', 'Rain', 'Earthquake']", "pk": "167"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00168", "date": "2019-04-15", "db_size": 382, "labels": "['Dolphin', 'Shipping Traffic', 'Orca']", "pk": "168"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00169", "date": "2015-07-06", "db_size": 567, "labels": "['Shipping Traffic', 'Fishing Trawler']", "pk": "169"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00170", "date": "2017-03-11", "db_size": 413, "labels": "['Humpback Whale']", "pk": "170"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00171", "date": "2015-12-26", "db_size": 532, "labels": "['Dolphin', 'Orca']", "pk": "171"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00172", "date": "2016-01-13", "db_size": 568, "labels": "['Snapping Shrimp', 'Humpback Whale']", "pk": "172"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00173", "date": "2009-06-07", "db_size": 442, "labels": "['Earthquake', 'Orca']", "pk": "173"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00174", "date": "2017-01-24", "db_size": 441, "labels": "['Fishing Trawler', 'Mink Whale', 'Earthquake']", "pk": "174"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00175", "date": "2020-05-02", "db_size": 465, "labels": "['Orca', 'Fishing Trawler']", "pk": "175"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00176", "date": "2013-10-19", "db_size": 388, "labels": "['Shipping Traffic', 'Orca', 'Rain']", "pk": "176"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "II", "db_name": "AERIAL_00177", "date": "2021-04-16", "db_size": 323, "labels": "['Earthquake', 'Orca', 'Dolphin']", "pk": "177"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "I", "db_name": "AERIAL_00178", "date": "2010-09-28", "db_size": 366, "labels": "['Humpback Whale', 'Shipping Traffic', 'Snapping Shrimp']", "pk": "178"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}, {"type": "Feature", "properties": {"security": "III", "db_name": "AERIAL_00179", "date": "2020-10-15", "db_size": 522, "labels": "['Orca', 'Fishing Trawler', 'Mink Whale']", "pk": "179"}, "geometry": {"type": "Point", "coordinates": [88.62391, 89.23834]}}]}
+        </div>
+        <div id="cus" style="display:none">{"type":"FeatureCollection","crs":{"type":"name","properties":{"name":"EPSG:4326"}},"features":[]}</div>
+      <div id="map-container" class="embed-responsive-item">
+        <div id="map-type" class="d-flex p-1">
+          <button type="submit" id="proj1" class="btn btn-sm proj-btn btn-secondary">Mercator Projection</button>
+          <button type="submit" id="proj2" class="btn btn-sm proj-btn btn-light">Arctic Projection</button>
+          <button type="submit" id="proj3" class="btn btn-sm proj-btn btn-light">Antarctic Projection</button>
+        </div>
+        <div id="map" style="width: 100%; height: 600px; border: 1px solid #ccc">
+          
+        </div>
+        <div id="map2" style="width: 100%; height: 600px; border: 1px solid #ccc">
+          
+        </div>
+        <div id="map2info">For the best results on Arctic Projection, avoid going over the yellow line with the search tools.</div>
+        <div id="map3" style="width: 100%; height: 600px; border: 1px solid #ccc">
+          
+        </div>
+      </div>
+    </div> 
+  </div>     
+</div>
+</div>
+
+<div class="container-fluid bg-warning text-white py-0">
+  <!-- change to bg-danger for secret banner-->
+  <div class="row justify-content-center">
+    <strong>USER NOTE: ALL DATA SHOWN ON THIS WEBSITE IS BOGUS DATA AND SHOULD BE USED FOR DEVELOPMENT PURPOSES ONLY</strong>
+  </div>
+</div>
+
+<!-- DataTables -->
+<div class="card mb-3">
+  <div class="card-header">
+	<i class="fas fa-table"></i>
+	Search Aerial Databases</div>
+  <div class="card-body">
+	<div class="table-responsive">
+	  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		<thead>
+		  <tr>
+			<th>Database</th>
+			<th>Date</th>
+			<th>Labels</th>
+			<th>Security</th>
+		</thead>
+		<tfoot>
+		  <tr>
+			<th>Database</th>
+			<th>Date</th>
+			<th>Labels</th>
+			<th>Security</th>
+		  </tr>
+		</tfoot>
+		<tbody id="tbodaerial">
+
+		</tbody>
+	  </table>
+	</div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+<script type="text/javascript" src="static/js/draw.js"></script>
+<script type="text/javascript" src="static/js/map-control.js"></script> 
+<script type="text/javascript" src="static/js/clearButton.js"></script> 
+
+</div> 
+
+</div>
+
+</div>
+
+    <!-- end main content-->
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="static/AdminLTE-master/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="static/AdminLTE-master/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="static/AdminLTE-master/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="static/AdminLTE-master/dist/js/adminlte.js"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="static/AdminLTE-master/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="static/AdminLTE-master/plugins/raphael/raphael.min.js"></script>
+<script src="static/AdminLTE-master/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script type="text/javascript" src="static/AdminLTE-master/italy.js"></script>
+<script type="text/javascript" src="static/AdminLTE-master/ri.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/neveldo/jQuery-Mapael@2.2.0/js/maps/world_countries.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/neveldo/jQuery-Mapael@2.2.0/js/maps/usa_states.js"></script>
+<!--<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>-->
+<!-- ChartJS -->
+<script src="static/AdminLTE-master/plugins/chart.js/Chart.min.js"></script>
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="static/AdminLTE-master/dist/js/pages/dashboard2.js"></script>
+<!-- DataTables-->
+<script src="static/vendor/datatables/jquery.dataTables.js"></script>
+<script src="static/vendor/datatables/dataTables.bootstrap4.js"></script>
+<script src="static/js/demo/datatables-demo.js"></script>
+</body>
+</html>
