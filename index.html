@@ -1,12 +1,201 @@
 <!DOCTYPE html>
 <html>
-<title>Temp</title>
-<body>
+<head>
+<title>Nathan Harding Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
-<a href="csc492.html">Subnautica Deep Dive Process</a><br><br>
-<a href="./SubnauticaDeepDive/index.html">Subnautica Deep Dive Site</a><br><br>
-<a href="./OversleptAgain/index.html">Overslept Again</a><br><br>
-<a href="./TheSandbox/projects.html">Mandala Maker</a><br><br>
-<a href="./CSC106/index.html">Joy of Programming</a><br><br>
-<a href="./Overcooked/overcookedhome.html">Overcooked</a><br><br>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+a, p{text-decoration: none;}
+</style>
+</head>
+<body class="w3-light-grey w3-content" style="max-width:100%">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar"><br>
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-center" title="close menu">
+        <button style="border-radius:15px; margin-left:30%; margin-bottom: 20px;" class="w3-button w3-dark-grey">Close</button>
+    </a>
+    <img src="img/nate.jpg" style="width:100%;" class="w3-round"><br><br>
+    <h4><b>Nathan's Portfolio</b></h4>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+  </div>
+  <div class="w3-panel w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:200px;">
+<div style="background-image: url(img/galaxy.gif); background-repeat:no-repeat; background-size:cover; background-position: center;">
+<!-- Header -->
+  <header id="portfolio">
+    <a href="#"><img src="img/nate.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    <span class="w3-hide-large w3-xlarge" onclick="w3_open()"><button style="border-radius: 15px; margin-top:10px; margin-left:10px" class="w3-button w3-dark-grey">Menu</button></span>
+  </header>
+
+
+ <!-- First Photo Grid-->
+  <div class="w3-row-padding">
+    <div class="w3-third w3-container w3-margin-bottom">
+    <a href="NonogramSolver/index.html" target = "_blank">
+    <div style="width:75%;margin:auto;margin-top:20%">
+      <img src="img/nono.png" alt="Nonogram Solver" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Nonogram Solver</b></p>
+        <p>A website I developed to solve nonograms, a type of number grid puzzle that creates images. It uses Admin-LTE for the UI, and solves nonograms based on a recursive algorithm that searchs through all valid row and column permutations.</p>
+      </div>
+    </div>
+    </a>
+    </div>
+    <div class="w3-third w3-container w3-margin-bottom">
+      <a href="DataOcean/index.html" target = "_blank">
+    <div style="width:75%;margin:auto;margin-top:20%">
+      <img src="img/dataocean.png" alt="Data Ocean" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Data Ocean</b></p>
+        <p>This is a subsection of a site I worked on to display and query submarine data, as well as manage users and view AWS instances/buckets. The full version of the site uses a Django backend with a Postgres database. This subsection just uses some JSON structures to display fake data.</p>
+      </div>
+    </div>
+    </a>
+    </div>
+    <div class="w3-third w3-container">
+      <a href="SubnauticaDeepDive/index.html" target = "_blank">
+    <div style="width:75%;margin:auto;margin-top:20%">
+      <img src="img/deepdive.png" alt="Deep Dive" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Subnautica Deep Dive</b></p>
+        <p>This was created as part of my CSC492 class, Human Computer Interaction. It is an informational site for a game called Subnautica, and uses Bootstrap and various JavScript libraries to display information in a (hopefully) visually interesting way.</p>
+      </div>
+    </div>
+    </a>
+    </div>
+  </div>
+  
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding">
+    <div class="w3-third w3-container w3-margin-bottom">
+      <a href="csc492.html" target = "_blank">
+    <div style="width:75%;margin:auto;margin-top:20%">
+      <img src="img/csc492.png" alt="CSC492" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Subnautica Deep Dive Process</b></p>
+        <p>This is the creation process for the Subnautica Deep Dive site for CSC492. This process was done in a group and demonstrates knowledge of the web development process, including concepts like problem statements, target users, use cases, storyboards, wireframes, a Figma Prototype, and user testing.</p>
+      </div>
+    </div>
+    </a>
+    </div>
+    <div class="w3-third w3-container w3-margin-bottom">
+      <a href="TheSandbox/projects.html" target = "_blank">
+    <div style="width:75%;margin:auto;margin-top:20%">
+      <img src="img/mandala.png" alt="Mandala Maker" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Mandala Maker</b></p>
+        <p>Part of an example site called "The Sandbox" made for CSC372: Dynamic Web Design and Programming. Mandala Maker is an adaptation of a Khan Academy project I did, expanded to a site using the canvas API. It also includes an API for exporting mandalas as images.</p>
+      </div>
+    </div>
+    </a>
+    </div>
+    <div class="w3-third w3-container">
+      <a href="Overcooked/overcookedhome.html" target = "_blank">
+    <div style="width:75%;margin:auto;margin-top:20%">
+      <img src="img/overcooked.png" alt="Overcooked" style="width:100%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Overcooked</b></p>
+        <p>An old site I made for CSC271: Web Design and Programming. Although not dynamic, it demonstrates some core web design skills without using any external libraries. It also inlcudes links to my CSC106 website, which houses my original Manadala Maker.</p>
+      </div>
+    </div>
+    </a>
+    </div>
+  </div>
+
+  <div class="w3-container w3-padding-large w3-white" id="about" style="margin:20px">
+    <h4><b>About Me</b></h4>
+    <p>Howdy! My name is Nathan and I am currently a Software Engineer for the Naval Undersea Warfare Center (NUWC) in Newport, RI.
+      I have also completed a Web Development Internship, worked as a tutor, assisted as a TA, and pushed carts at a Target.
+      I graduated from URI with a BS in Computer Science and a BS in Applied Mathematics. I also minored in Web Development and Cyber Security. 
+      For work, I enjoy full stack web development and database management, and I particularly enjoy writting JavaScript. Outside of work I enjoy 
+      playing games, spending time with friends, and fencing (although I am very out of practice). If I were an animal, I would probably want to
+      be an octopus, and if I had to pick an element from Avatar, I would be an air bender.
+
+    </p>
+    </div>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-large w3-grey">
+    <h4 id="contact"><b>Contact Me</b></h4>
+    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
+      <div class="w3-third w3-dark-grey">
+        <p>nharding33100@gmail.com</p>
+      </div>
+      <a href="https://www.linkedin.com/in/nharding331" target="_blank">
+      <div class="w3-third w3-blue">
+        <p>LinkedIn</p>
+      </div>
+      </a>
+      <a href="https://github.com/nateh331" target="_blank">
+      <div class="w3-third w3-dark-grey">
+        <p>Github</p>
+      </div>
+      </a>
+    </div>
+  </div>
+  </div>
+
+  <!-- Footer 
+  <footer class="w3-container w3-padding-32 w3-dark-grey">
+  <div class="w3-row-padding">
+    <div class="w3-third">
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </div>
+  
+    <div class="w3-third">
+      
+    </div>
+
+    <div class="w3-third">
+      <button class="w3-button w3-dark-grey w3-padding-large w3-margin-top w3-margin-bottom">
+        Download Resume
+      </button>
+    </div>
+
+  </div>
+  </footer>
+  -->
+
+  </div>
+
+  <script>
+    // Script to open and close sidebar
+    function w3_open(){
+        document.getElementById("mySidebar").style.display = "block";
+        document.getElementById("myOverlay").style.display = "block";
+    }
+     
+    function w3_close(){
+        document.getElementById("mySidebar").style.display = "none";
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    </script>
+
+
+</body>
 </html>
