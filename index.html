@@ -25,6 +25,12 @@ a, p{text-decoration: none;}
 video::-webkit-media-controls {
   display: none;
 }
+
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
 .proj-text{
   border-radius: 0px 0px 15px 15px;
   overflow-y: auto;
@@ -67,7 +73,7 @@ video::-webkit-media-controls {
 </style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:100%">
-  <video id="bgVideo" controls preload="true" loop muted>
+  <video id="bgVideo" controls preload="true" autoplay loop muted>
     <source src="img/login-vid.mp4" type="video/mp4" /> 
   </video>
 
@@ -101,7 +107,7 @@ video::-webkit-media-controls {
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:200px;">
-<div>
+<div id="main-div">
 <!-- Header -->
   <header id="projects">
     <a href="#"><img src="img/nate.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
@@ -226,6 +232,10 @@ video::-webkit-media-controls {
   <script>
     const video = document.getElementById('bgVideo');
     video.play();
+
+    video.onerror = () => {
+      document.getElementById("main-div").style.backgroundImage = "linear-gradient(#456184,#02050b)";
+    }
 
     // Script to open and close sidebar
     function w3_open(){
