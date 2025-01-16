@@ -67,7 +67,7 @@ video::-webkit-media-controls {
 </style>
 </head>
 <body class="w3-light-grey w3-content" style="max-width:100%">
-  <video id="bgVideo" controls preload="true" autoplay loop muted>
+  <video id="bgVideo" controls preload="true" loop muted>
     <source src="img/login-vid.mp4" type="video/mp4" /> 
   </video>
 
@@ -224,6 +224,9 @@ video::-webkit-media-controls {
   </div>
 
   <script>
+    const video = document.getElementById('bgVideo');
+    video.play();
+
     // Script to open and close sidebar
     function w3_open(){
         document.getElementById("mySidebar").style.display = "block";
